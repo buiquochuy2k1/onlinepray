@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <!--<base href="/">-->
+    <!--<base href=".">-->
+    <base href="." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="./assets/css/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="./assets/css/jquery-sakura.min.css" />
+    <link rel="stylesheet" href="./assets/css/mdb2.min.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+
+    <title>Online Pray</title>
+    <meta name="description" content="Online Pray" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Online Pray" />
+    <meta property="og:description" content="Online Pray" />
+    <meta property="og:site_name" content="Online Pray" />
+  </head>
+
+  <style>
+    INPUT:-webkit-autofill,
+    SELECT:-webkit-autofill,
+    TEXTAREA:-webkit-autofill {
+      animation-name: onautofillstart;
+    }
+    INPUT:not(:-webkit-autofill),
+    SELECT:not(:-webkit-autofill),
+    TEXTAREA:not(:-webkit-autofill) {
+      animation-name: onautofillcancel;
+    }
+    @keyframes onautofillstart {
+    }
+    @keyframes onautofillcancel {
+    }
+
+    .blink {
+      display: block;
+      font-size: 16px;
+      font-weight: bold;
+      color: #ce6800;
+      font-style: italic;
+      animation: blinkMe 5s linear infinite;
+    }
+
+    @keyframes blinkMe {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    input.form-control.bg-none {
+      margin: 10px 0px;
+    }
+
+    .content.text-center.mt-5 {
+      padding: 5px 20px;
+    }
+    @media only screen and (max-width: 768px) {
+      img.text-center.nhang.aos-init.aos-animate {
+        left: 48.58% !important;
+      }
+    }
+    @media (min-width: 768px) and (max-width: 968px) {
+      img.text-center.nhang.aos-init.aos-animate {
+        left: 49.2% !important;
+      }
+    }
+
+    /* Canvas Styles */
+    #canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+
+  <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" style="overflow-x: hidden">
+    <!-- Canvas for Smoke effect -->
+    <canvas id="canvas"></canvas>
+
+    <div class="container">
+      <header class="header">
+        <div class="row mx-auto pointer header-top">
+          <div class="text-center">
+            <a class="relative">
+              <img
+                id="bantho"
+                src="./assets/images/bantho.png"
+                alt="Logo"
+                class="img-fluid ban-tho rounded pt-5"
+                style="height: 450px"
+              />
+              <img src="./assets/images/nhang.png" alt="Nhang" class="text-center nhang" data-aos="fade-down"
+              data-aos-duration="2500" style="height: 105px" display: none; />
+            </a>
+            <div class="progress mt-5">
+              <div
+                class="progress-bar progress-bar-striped bg-danger w-100"
+                role="progressbar"
+                aria-valuenow="100"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+        </div>
+	<!-- Hit Counter + Incense Counter -->
+<div id="counter-container" style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); text-align: center; font-size: 14px;">
+  <div style="display: flex; gap: 20px; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 10px; color: white;">
+    <div>
+      🔥 Số người đã thắp nhang:
+    </div>
+    <div>
+      <script type="text/javascript" src="https://counter.websiteout.com/js/5/6/5634/0"></script>
+    </div>
+  </div>
+</div>
+
+        <!-- Prayer form -->
+        <div class="content text-center mt-5">
+          <form id="pray" novalidate>
+            <div class="col-lg-3 mb-4 mx-auto">
+              <input
+                type="text"
+                id="username"
+                placeholder="Nhập tên của bạn..."
+                class="form-control bg-none"
+              />
+              <textarea
+                id="wish"
+                rows="4"
+                placeholder="Mong muốn của bạn..."
+                class="form-control bg-none"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-outline-primary save">Thắp Hương</button>
+          </form>
+        </div>
+      </header>
+      <!-- Thêm div chứa thông báo dưới form -->
+      <div id="notification" class="notification text-center mt-3"></div>
+
+      <!-- Audio control -->
+      <audio id="sound" controls loop class="d-none">
+        <source src="./assets/audio/backgound11.mp3" type="audio/mp3" />
+      </audio>
+    </div>
+	
+	
+    <!-- External JS Links -->
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/jquery-sakura.min.js"></script>
+    <script src="./assets/js/smoke.js"></script>
+    <script src="./assets/js/mdb.min.js"></script>
+    <script src="./assets/js/aos.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Custom JS to modify placeholder text -->
+    <script>
+      $(function () {
+        if (typeof $ === 'undefined') {
+          console.error('jQuery is not loaded. Check the script path.');
+        } else {
+          $('input').attr('placeholder', 'Nhập tên của bạn...');
+          $('textarea').attr('placeholder', 'Mong muốn của bạn...');
+        }
+      });
+
+      // Initialize AOS
+      if (typeof AOS === 'undefined') {
+        console.error('AOS is not loaded. Check the script path.');
+      } else {
+        AOS.init();
+      }
+    </script>
+  </body>
+</html>
