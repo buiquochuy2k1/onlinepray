@@ -269,6 +269,12 @@
   overflow: hidden; /* Ẩn các phần tử tràn ra ngoài */
 }
 
+@media only screen and (max-width: 768px) {
+  #counter-container {
+    display: none !important;
+  }
+}
+
 .nhang {
   display: none; /* Ban đầu cây nhang ẩn */
   opacity: 0;
