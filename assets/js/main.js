@@ -195,9 +195,9 @@ document.oncontextmenu = new Function('return false');
 
 function keyFunction(event) {
   //"F12" key
-  // if (event.keyCode == 123) {
-  //   return false;
-  // }
+  if (event.keyCode == 123) {
+    return false;
+  }
 
   if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
     return false;
